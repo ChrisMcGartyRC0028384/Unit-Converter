@@ -14,6 +14,19 @@ namespace Unit_Converter
     {
         Dictionary<string, double> prefixes = new Dictionary<string, double>()
         {
+           {"nm", 1e-9 },
+           {"μm", 1e-6 },
+           {"mm", 1e-3 },
+           {"cm", 1e-2 },
+           {"m", 1 },
+           {"km", 1e3 },
+           {"Mm", 1e6 },
+           {"Gm" +
+                "", 1e9 }
+        };
+
+        Dictionary<string, double> areas = new Dictionary<string, double>()
+        {
            {"nm²", 1e-18 },
            {"μm²", 1e-12 },
            {"mm²", 1e-6 },
@@ -23,12 +36,24 @@ namespace Unit_Converter
            {"Mm²", 1e12 },
            {"Gm²" +
                 "", 1e18 }
-        };  
-    
+        };
+
+        Dictionary<string, double> volumes = new Dictionary<string, double>()
+        {
+           {"nm³", 1e-27 },
+           {"μm³", 1e-18 },
+           {"mm³", 1e-9 },
+           {"cm³", 1e-6 },
+           {"m³", 1 },
+           {"km³", 1e9 },
+           {"Mm³", 1e18 },
+           {"Gm³" +
+                "", 1e27 }
+        };
         public Form1()
         {
             InitializeComponent();
-            foreach (string k in prefixes.Keys)
+            foreach (string k in areas.Keys)
             {
                 comboBox1.Items.Add(k);
                 comboBox2.Items.Add(k);
@@ -43,7 +68,7 @@ namespace Unit_Converter
             try
             {
                 double d = double.Parse(textBox1.Text);
-                double d2 = d * prefixes[comboBox1.Text] / prefixes[comboBox2.Text];
+                double d2 = d * areas[comboBox1.Text] / areas[comboBox2.Text];
                 label1.Text = d2.ToString();
             }
             catch
